@@ -1,8 +1,9 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Icon=..\Unbenannt.ico
+#AutoIt3Wrapper_Icon=kodi.ico
 #AutoIt3Wrapper_Outfile=Kodi Texture.exe
+#AutoIt3Wrapper_UseX64=n
 #AutoIt3Wrapper_Res_Description=for Kodi.
-#AutoIt3Wrapper_Res_Fileversion=1.2
+#AutoIt3Wrapper_Res_Fileversion=1.2.0.0
 #AutoIt3Wrapper_Res_LegalCopyright=by e0xify
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #cs ----------------------------------------------------------------------------
@@ -19,56 +20,57 @@
 
 ; Create a GUI with various controls.
 #include <GUIConstantsEx.au3>
+#include <String.au3>
 
-FileInstall("C:\Users\blank\Downloads\neu\base.exe",@tempdir & "\base.exe")
-FileInstall("C:\Users\blank\Downloads\neu\D3DX9_43.dll",@tempdir & "\D3DX9_43.dll")
-FileInstall("C:\Users\blank\Downloads\neu\glew32.dll",@tempdir & "\glew32.dll")
-FileInstall("C:\Users\blank\Downloads\neu\jpeg.dll",@tempdir & "\jpeg.dll")
-FileInstall("C:\Users\blank\Downloads\neu\libjpeg-8.dll",@tempdir & "\libjpeg-8.dll")
-FileInstall("C:\Users\blank\Downloads\neu\libpng12.dll",@tempdir & "\libpng12.dll")
-FileInstall("C:\Users\blank\Downloads\neu\libpng15-15.dll",@tempdir & "\libpng15-15.dll")
-FileInstall("C:\Users\blank\Downloads\neu\libtiff.dll",@tempdir & "\libtiff.dll")
-FileInstall("C:\Users\blank\Downloads\neu\libtiff-5.dll",@tempdir & "\libtiff-5.dll")
-FileInstall("C:\Users\blank\Downloads\neu\libwebp-2.dll",@tempdir & "\libwebp-2.dll")
-FileInstall("C:\Users\blank\Downloads\neu\SDL.dll",@tempdir & "\SDL.dll")
-FileInstall("C:\Users\blank\Downloads\neu\SDL_image.dll",@tempdir & "\SDL_image.dll")
-FileInstall("C:\Users\blank\Downloads\neu\TexturePacker.exe",@tempdir & "\TexturePacker.exe")
-FileInstall("C:\Users\blank\Downloads\neu\zlib1.dll",@tempdir & "\zlib1.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\base.exe", @TempDir & "\base.exe")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\glew32.dll", @TempDir & "\glew32.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\jpeg.dll", @TempDir & "\jpeg.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libjpeg-8.dll", @TempDir & "\libjpeg-8.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libpng12.dll", @TempDir & "\libpng12.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libpng15-15.dll", @TempDir & "\libpng15-15.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libtiff.dll", @TempDir & "\libtiff.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libtiff-5.dll", @TempDir & "\libtiff-5.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libwebp-2.dll", @TempDir & "\libwebp-2.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\SDL.dll", @TempDir & "\SDL.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\SDL_image.dll", @TempDir & "\SDL_image.dll")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
+FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\zlib1.dll", @TempDir & "\zlib1.dll")
 
-Local $hGUI = GUICreate("Kodi XBMC - Texture Tool (v.1.2)",600,190)
-GuictrlcreateLabel("Decompile Mode",100,5,100,12)
-Guictrlsetfont(-1,8)
-Guictrlsetstate(-1,$GUI_DISABLE)
-GuictrlcreateLabel("Compile Mode",410,5,100,12)
-Guictrlsetfont(-1,8)
-Guictrlsetstate(-1,$GUI_DISABLE)
-$select = GUICtrlCreateButton("Select Input",180,30,100,25)
-$output = GUICtrlCreateButton("Select Output",180,60,100,25)
-Guictrlsetstate(-1,$GUI_DISABLE)
-$start = GUICtrlCreateButton("Start",180,90,100,25)
-Guictrlsetstate(-1,$GUI_DISABLE)
+Local $hGUI = GUICreate("Kodi XBMC - Texture Tool (v.1.4)", 600, 190)
+GUICtrlCreateLabel("Decompile Mode", 100, 5, 100, 12)
+GUICtrlSetFont(-1, 8)
+GUICtrlSetState(-1, $GUI_DISABLE)
+GUICtrlCreateLabel("Compile Mode", 410, 5, 100, 12)
+GUICtrlSetFont(-1, 8)
+GUICtrlSetState(-1, $GUI_DISABLE)
+$select = GUICtrlCreateButton("Select input", 180, 30, 100, 25)
+$output = GUICtrlCreateButton("Select output", 180, 60, 100, 25)
+GUICtrlSetState(-1, $GUI_DISABLE)
+$start = GUICtrlCreateButton("Start", 180, 90, 100, 25)
+GUICtrlSetState(-1, $GUI_DISABLE)
 ; Display the GUI.
-GuictrlcreateLabel("1.Select the input File",10,35,150,25)
-GuictrlcreateLabel("2.Select the output Folder",10,65,150,25)
-GuictrlcreateLabel("2.Press Start to begin",10,95,150,25)
-GuictrlcreateButton("",-5,120,720,5)
-Guictrlsetstate(-1,$GUI_DISABLE)
-$status = GuictrlcreateLabel("Information Label / Watch out / Pretty dangerous",10,165,600,25)
-Guictrlsetstate(-1,$GUI_DISABLE)
-$progress = GUICtrlCreateProgress(5,130,590,20)
-GuictrlcreateButton("",293,-5,5,127)
-Guictrlsetstate(-1,$GUI_DISABLE)
+GUICtrlCreateLabel("1.Select the input file", 10, 35, 150, 25)
+GUICtrlCreateLabel("2.Select the output folder", 10, 65, 150, 25)
+GUICtrlCreateLabel("2.Press start to begin", 10, 95, 150, 25)
+GUICtrlCreateButton("", -5, 120, 720, 5)
+GUICtrlSetState(-1, $GUI_DISABLE)
+$status = GUICtrlCreateLabel("Kodi XBMC - Texture Tool - Status Label", 10, 165, 600, 25)
+GUICtrlSetState(-1, $GUI_DISABLE)
+$progress = GUICtrlCreateProgress(5, 130, 590, 20)
+GUICtrlCreateButton("", 293, -5, 5, 127)
+GUICtrlSetState(-1, $GUI_DISABLE)
 ;#-------------------------------------------------------------------------
 
 
-$select2 = GUICtrlCreateButton("Select Input Folder",480,30,100,25)
-$output2 = GUICtrlCreateButton("Select Output File",480,60,100,25)
-Guictrlsetstate(-1,$GUI_DISABLE)
-$start2 = GUICtrlCreateButton("Start",480,90,100,25)
-Guictrlsetstate(-1,$GUI_DISABLE)
-GuictrlcreateLabel("1.Select the input Folder",310,35,150,25)
-GuictrlcreateLabel("2.Select the output File",310,65,150,25)
-GuictrlcreateLabel("2.Press Start to begin",310,95,150,25)
+$select2 = GUICtrlCreateButton("Select input folder", 480, 30, 100, 25)
+$output2 = GUICtrlCreateButton("Select output file", 480, 60, 100, 25)
+GUICtrlSetState(-1, $GUI_DISABLE)
+$start2 = GUICtrlCreateButton("Start", 480, 90, 100, 25)
+GUICtrlSetState(-1, $GUI_DISABLE)
+GUICtrlCreateLabel("1.Select the input folder", 310, 35, 150, 25)
+GUICtrlCreateLabel("2.Select the output file", 310, 65, 150, 25)
+GUICtrlCreateLabel("2.Press start to begin", 310, 95, 150, 25)
 
 GUISetState(@SW_SHOW, $hGUI)
 
@@ -77,78 +79,97 @@ While 1
 	Switch GUIGetMsg()
 		Case $GUI_EVENT_CLOSE
 			ExitLoop
-		case $select
-			$selected = FileOpenDialog("Please select the .xbt File to extract",@DesktopDir,"XBMC Texture File (*.xbt)")
-			Guictrlsetdata($status,"             Good Guy ! You enabled Step 2")
-			if $selected <> "" Then
-				Guictrlsetstate($output,$GUI_ENABLE)
-			Endif
-		case $output
-			$outputed = FileSelectFolder("Please select destination directory",@DesktopDir)
-			Guictrlsetdata($status,"               Awesome ! You enabled Step 3")
-			Guictrlsetstate($start,$GUI_ENABLE)
+		Case $select
+			$selected = FileOpenDialog("Please select the .xbt File to extract", @DesktopDir, "XBMC Texture File (*.xbt)")
+			If StringInStr($selected, " ") Then
+				MsgBox(0, "Error", "TexturePacker isn't supporting Spaces in Directory")
+				$selected = FileOpenDialog("Please select the .xbt File to extract", @DesktopDir, "XBMC Texture File (*.xbt)")
+			Else
+				GUICtrlSetData($status, "             Step 2 is enabled, please go ahead.")
+				If $selected <> "" Then
+					GUICtrlSetState($output, $GUI_ENABLE)
+				EndIf
+			EndIf
+		Case $output
+			$outputed = FileSelectFolder("Please select destination directory", @DesktopDir)
+			If StringInStr($outputed, " ") Then
+				MsgBox(0, "Error", "TexturePacker isn't supporting Spaces in Directory")
+				$outputed = FileSelectFolder("Please select destination directory", @DesktopDir)
+			Else
+				GUICtrlSetData($status, "               Awesome ! You enabled Step 3")
+				GUICtrlSetState($start, $GUI_ENABLE)
+			EndIf
 
-		case $start
-			Traytip("Watch out","Extract is in progress",2,1)
+		Case $start
+			TrayTip("Watch out", "Extract is in progress", 2, 1)
 			ProcessClose("base.exe")
-			$command = "base.exe " & '"' & $selected & '"' & ' "' &  $outputed & '"'
+			$command = "base.exe " & '"' & $selected & '"' & ' "' & $outputed & '"'
 			;msgbox(0,"",$command)
-			Run(@ComSpec & " /c " & $command ,@tempdir, @SW_HIDE)
-			Guictrlsetdata($status,"By the Way, its not taking that long / give a fu** at the Progressbar - #justanimationthings  | WAIT DUDE ... WAIT !")
-			Traytip("XBMC Texture Extraction","Wait dude...just wait..",2,1)
+			Run(@ComSpec & " /c " & $command, @TempDir, @SW_HIDE)
+			GUICtrlSetData($status, "Please wait until it's done. Get yourself a coffee or something...")
+			TrayTip("XBMC Texture Extraction", "Please wait until its done...", 2, 1)
 			bar()
 			ProcessWaitClose("cmd.exe")
-			Guictrlsetdata($progress,100)
+			GUICtrlSetData($progress, 100)
 
-			Guictrlsetdata($status,"                  Holyshit !   We are done (: ")
+			GUICtrlSetData($status, "                  We are done (: ")
 			ShellExecute($outputed)
-		case $select2
-			$outputedd = FileSelectFolder("Please select Directory to compile to .xbt File",@DesktopDir)
-			Guictrlsetdata($status,"               Awesome ! You enabled Step 2")
-			Guictrlsetstate($output2,$GUI_ENABLE)
-		case $output2
-			$selected2 = FileSaveDialog("Please define a name for .xbt",@DesktopDir,"XBMC Texture File (*.xbt)",0,"Textures.xbt")
-			Guictrlsetdata($status,"             Good Guy ! You enabled Step 2")
-			if $selected2 <> "" Then
-				Guictrlsetstate($start2,$GUI_ENABLE)
+		Case $select2
+			$outputedd = FileSelectFolder("Please select Directory to compile to .xbt File", @DesktopDir)
+			if StringinStr($outputedd, " ") Then
+				MsgBox(0, "Error", "TexturePacker isn't supporting Spaces in Directory")
+				$outputedd = FileSelectFolder("Please select Directory to compile to .xbt File", @DesktopDir)
+			else
+			GUICtrlSetData($status, "               Step 2 is enabled, please go ahead.")
+			GUICtrlSetState($output2, $GUI_ENABLE)
 			Endif
-		case $start2
-			Traytip("Watch out","Extract is in progress",2,1)
+		Case $output2
+			$selected2 = FileSaveDialog("Please define a name for .xbt", @DesktopDir, "XBMC Texture File (*.xbt)", 0, "Textures.xbt")
+			if StringinStr($selected2, " ") then
+				MsgBox(0, "Error", "TexturePacker isn't supporting Spaces in Directory")
+				$selected2 = FileSaveDialog("Please define a name for .xbt", @DesktopDir, "XBMC Texture File (*.xbt)", 0, "Textures.xbt")
+			Else
+			GUICtrlSetData($status, "             Step 2 is enabled, please go ahead.")
+			If $selected2 <> "" Then
+				GUICtrlSetState($start2, $GUI_ENABLE)
+			EndIf
+			Endif
+		Case $start2
+			TrayTip("Watch out", "Extract is in progress", 2, 1)
 			ProcessClose("TexturePacker.exe")
-			$command = "START /B /WAIT TexturePacker -dupcheck -input "  & $outputedd & " -output " & $selected2
+			$command = "TexturePacker -input " & $outputedd & " -output " & $selected2
 			;msgbox(0,"",$command)
-			Run(@ComSpec & " /c " & $command ,@tempdir, @SW_HIDE)
-			Guictrlsetdata($status,"By the Way, its not taking that long / give a fu** at the Progressbar - #justanimationthings | WAIT DUDE ... WAIT ! ")
-			Traytip("XBMC Texture Extraction","Wait dude...just wait..",2,1)
+			Run(@ComSpec & " /c " & $command, @TempDir, @SW_HIDE)
+			GUICtrlSetData($status, "Please wait until it's done. Get yourself a coffee or something...")
+			TrayTip("XBMC Texture Extraction", "Wait dude...just wait..", 2, 1)
 			bar()
 			ProcessWaitClose("cmd.exe")
-			Guictrlsetdata($progress,100)
+			GUICtrlSetData($progress, 100)
 
-			Guictrlsetdata($status,"                  Holyshit !   We are done (: ")
-		EndSwitch
+			GUICtrlSetData($status, "                  We are done (: ")
+	EndSwitch
 WEnd
 
 Func hide()
-			Winsetstate("Dummy Window! (Keine Rückmeldung)","",@SW_HIDE)
-			WinSetTrans ( "Dummy Window! (Keine Rückmeldung)","",0 )
-			Winsetstate("Dummy Window!","",@SW_HIDE)
-			WinSetTrans ( "Dummy Window!","",0 )
-			WinClose("Dummy Window!")
-			WinKill("Dummy Window!")
-			WinKill("Dummy Window! (Keine Rückmeldung)")
+	WinSetState("Dummy Window! (Keine Rückmeldung)", "", @SW_HIDE)
+	WinSetTrans("Dummy Window! (Keine Rückmeldung)", "", 0)
+	WinSetState("Dummy Window!", "", @SW_HIDE)
+	WinSetTrans("Dummy Window!", "", 0)
+	WinClose("Dummy Window!")
+	WinKill("Dummy Window!")
+	WinKill("Dummy Window! (Keine Rückmeldung)")
+EndFunc   ;==>hide
 
-Endfunc
+Func bar()
+	For $i = 0 To 100 Step 3
+		GUICtrlSetData($progress, $i)
+		Sleep(200)
+		If $i = 99 Then
+			$i = 0
+		EndIf
+		If Not ProcessExists("cmd.exe") Then
+			$i = 100
+		EndIf
+	Next
 
-func bar()
-	for $i = 0 to 100 Step 3
-	GUICtrlSetData($progress,$i)
-	sleep(200)
-	if $i = 99 then
-	$i = 0
-	Endif
-	if not ProcessExists("cmd.exe") Then
-		$i = 100
-	Endif
-Next
-
-Endfunc
+EndFunc   ;==>bar
