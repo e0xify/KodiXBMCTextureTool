@@ -1,7 +1,6 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Icon=kodi.ico
+#AutoIt3Wrapper_Icon=fav.ico
 #AutoIt3Wrapper_Outfile=Kodi Texture.exe
-#AutoIt3Wrapper_UseX64=n
 #AutoIt3Wrapper_Res_Description=for Kodi.
 #AutoIt3Wrapper_Res_Fileversion=1.2.0.0
 #AutoIt3Wrapper_Res_LegalCopyright=by e0xify
@@ -22,22 +21,11 @@
 #include <GUIConstantsEx.au3>
 #include <String.au3>
 
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\base.exe", @TempDir & "\base.exe")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\glew32.dll", @TempDir & "\glew32.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\jpeg.dll", @TempDir & "\jpeg.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libjpeg-8.dll", @TempDir & "\libjpeg-8.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libpng12.dll", @TempDir & "\libpng12.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libpng15-15.dll", @TempDir & "\libpng15-15.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libtiff.dll", @TempDir & "\libtiff.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libtiff-5.dll", @TempDir & "\libtiff-5.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\libwebp-2.dll", @TempDir & "\libwebp-2.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\SDL.dll", @TempDir & "\SDL.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\SDL_image.dll", @TempDir & "\SDL_image.dll")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
-FileInstall("C:\Users\Rene.Kopplin\Downloads\GitHub\KodiXBMCTextureTool\source\zlib1.dll", @TempDir & "\zlib1.dll")
+FileInstall("C:\Users\rkopplin\Desktop\Kodi\source\base.exe", @TempDir & "\base.exe")
+FileInstall("C:\Users\rkopplin\Desktop\Kodi\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
+FileInstall("C:\Users\rkopplin\Desktop\Kodi\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
 
-Local $hGUI = GUICreate("Kodi XBMC - Texture Tool (v.1.4)", 600, 190)
+Local $hGUI = GUICreate("Kodi XBMC - Texture Tool (v. 2.0)", 600, 190)
 GUICtrlCreateLabel("Decompile Mode", 100, 5, 100, 12)
 GUICtrlSetFont(-1, 8)
 GUICtrlSetState(-1, $GUI_DISABLE)
@@ -55,7 +43,7 @@ GUICtrlCreateLabel("2.Select the output folder", 10, 65, 150, 25)
 GUICtrlCreateLabel("2.Press start to begin", 10, 95, 150, 25)
 GUICtrlCreateButton("", -5, 120, 720, 5)
 GUICtrlSetState(-1, $GUI_DISABLE)
-$status = GUICtrlCreateLabel("Kodi XBMC - Texture Tool - Status Label", 10, 165, 600, 25)
+$status = GUICtrlCreateLabel("Created by e0xify // TexturePacker by uNiversal // Decompiler by tiben20", 10, 165, 600, 25)
 GUICtrlSetState(-1, $GUI_DISABLE)
 $progress = GUICtrlCreateProgress(5, 130, 590, 20)
 GUICtrlCreateButton("", 293, -5, 5, 127)
@@ -137,7 +125,7 @@ While 1
 		Case $start2
 			TrayTip("Watch out", "Extract is in progress", 2, 1)
 			ProcessClose("TexturePacker.exe")
-			$command = "TexturePacker -input " & $outputedd & " -output " & $selected2
+			$command = "TexturePacker -dupecheck -input " & $outputedd & " -output " & $selected2
 			;msgbox(0,"",$command)
 			Run(@ComSpec & " /c " & $command, @TempDir, @SW_HIDE)
 			GUICtrlSetData($status, "Please wait until it's done. Get yourself a coffee or something...")
