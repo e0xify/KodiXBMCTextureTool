@@ -21,9 +21,9 @@
 #include <GUIConstantsEx.au3>
 #include <String.au3>
 
-FileInstall("C:\Users\rkopplin\Desktop\Kodi\source\base.exe", @TempDir & "\base.exe")
-FileInstall("C:\Users\rkopplin\Desktop\Kodi\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
-FileInstall("C:\Users\rkopplin\Desktop\Kodi\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
+FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\base.exe", @TempDir & "\base.exe")
+FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
+FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
 
 Local $hGUI = GUICreate("Kodi XBMC - Texture Tool (v. 2.0)", 600, 190)
 GUICtrlCreateLabel("Decompile Mode", 100, 5, 100, 12)
@@ -43,7 +43,7 @@ GUICtrlCreateLabel("2.Select the output folder", 10, 65, 150, 25)
 GUICtrlCreateLabel("2.Press start to begin", 10, 95, 150, 25)
 GUICtrlCreateButton("", -5, 120, 720, 5)
 GUICtrlSetState(-1, $GUI_DISABLE)
-$status = GUICtrlCreateLabel("Created by e0xify // TexturePacker by uNiversal // Decompiler by tiben20", 10, 165, 600, 25)
+$status = GUICtrlCreateLabel("Created by e0xify", 10, 165, 600, 25)
 GUICtrlSetState(-1, $GUI_DISABLE)
 $progress = GUICtrlCreateProgress(5, 130, 590, 20)
 GUICtrlCreateButton("", 293, -5, 5, 127)
