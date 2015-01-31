@@ -25,7 +25,7 @@ FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\base.exe",
 FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
 FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
 
-Local $hGUI = GUICreate("Kodi XBMC - Texture Tool (v. 2.0)", 600, 190)
+Local $hGUI = GUICreate("Kodi XBMC - Texture Tool (v. 2.1)", 600, 190)
 GUICtrlCreateLabel("Decompile Mode", 100, 5, 100, 12)
 GUICtrlSetFont(-1, 8)
 GUICtrlSetState(-1, $GUI_DISABLE)
