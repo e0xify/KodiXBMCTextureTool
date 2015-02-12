@@ -14,7 +14,7 @@ How to compile:
 3. Press Start
 4. Wait until done
 
-![alt tag](http://www11.pic-upload.de/30.01.15/hnw22psrejko.png)
+![alt tag](http://fs2.directupload.net/images/150212/784he33g.png)
 
 More Informations
 http://forum.xbmc.org/showthread.php?tid=201883
