@@ -1,6 +1,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=fav.ico
 #AutoIt3Wrapper_Outfile=Kodi Texture.exe
+#AutoIt3Wrapper_UseUpx=y
 #AutoIt3Wrapper_Res_Description=for Kodi.
 #AutoIt3Wrapper_Res_Fileversion=1.2.0.0
 #AutoIt3Wrapper_Res_LegalCopyright=by e0xify
@@ -24,10 +25,10 @@
 #include <WindowsConstants.au3>
 #include <WinAPI.au3>
 
-FileInstall("C:\Users\rkopplin\Desktop\KodiXBMCTextureTool-master\source\base.exe", @TempDir & "\base.exe")
-FileInstall("C:\Users\rkopplin\Desktop\KodiXBMCTextureTool-master\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
-FileInstall("C:\Users\rkopplin\Desktop\KodiXBMCTextureTool-master\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
-FileInstall("C:\Users\rkopplin\Desktop\KodiXBMCTextureTool-master\source\kodi.png", @TempDir & "\kodi.png")
+FileInstall("C:\Users\rkopplin\Documents\KodiXBMCTextureTool-master\KodiXBMCTextureTool-master\source\base.exe", @TempDir & "\base.exe")
+FileInstall("C:\Users\rkopplin\Documents\KodiXBMCTextureTool-master\KodiXBMCTextureTool-master\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
+FileInstall("C:\Users\rkopplin\Documents\KodiXBMCTextureTool-master\KodiXBMCTextureTool-master\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
+FileInstall("C:\Users\rkopplin\Documents\KodiXBMCTextureTool-master\KodiXBMCTextureTool-master\source\kodi.png", @TempDir & "\kodi.png")
 
 Global $g_hGUI = GUICreate("Kodi - Texture Tool", 285, 490)
 _GDIPlus_Startup()
@@ -78,29 +79,19 @@ While 1
 			ExitLoop
 		Case $select
 			$selected = FileOpenDialog("Please select the .xbt File to extract", @DesktopDir, "Kodi Texture File (*.xbt)")
-			If StringInStr($selected, " ") Then
-				MsgBox(0, "Error", "TexturePacker isn't supporting Spaces in Directory")
-				$selected = FileOpenDialog("Please select the .xbt File to extract", @DesktopDir, "Kodi Texture File (*.xbt)")
-			Else
 				GUICtrlSetData($status, "             Step 2 is enabled, please go ahead.")
 				If $selected <> "" Then
 					GUICtrlSetState($output, $GUI_ENABLE)
 				EndIf
-			EndIf
 		Case $output
 			$outputed = FileSelectFolder("Please select destination directory", @DesktopDir)
-			If StringInStr($outputed, " ") Then
-				MsgBox(0, "Error", "TexturePacker isn't supporting Spaces in Directory")
-				$outputed = FileSelectFolder("Please select destination directory", @DesktopDir)
-			Else
 				GUICtrlSetData($status, "               Awesome ! You enabled Step 3")
 				GUICtrlSetState($start, $GUI_ENABLE)
-			EndIf
 
 		Case $start
-			TrayTip("Watch out", "Extract is in progress", 2, 1)
+			TrayTip("Watch out", "Extraction is in progress", 2, 1)
 			ProcessClose("base.exe")
-			$command = "base.exe " & '"' & $selected & '"' & ' "' & $outputed & '"'
+			$command = "base.exe " & '"' & $selected & '"' & ' "' & $outputed
 			;msgbox(0,"",$command)
 			Run(@ComSpec & " /c " & $command, @TempDir, @SW_HIDE)
 			GUICtrlSetData($status, "Please wait until it's done. Get yourself a coffee...")
@@ -112,25 +103,15 @@ While 1
 			GUICtrlSetData($status, "                  We are done (: ")
 			ShellExecute($outputed)
 		Case $select2
-			$outputedd = FileSelectFolder("Please select Directory to compile to .xbt File", @DesktopDir)
-			if StringinStr($outputedd, " ") Then
-				MsgBox(0, "Error", "TexturePacker isn't supporting Spaces in Directory")
-				$outputedd = FileSelectFolder("Please select Directory to compile to .xbt File", @DesktopDir)
-			else
+			$outputedd = FileSelectFolder("Please select directory to compile to .xbt File", @DesktopDir)
 			GUICtrlSetData($status, "               Step 2 is enabled, please go ahead.")
 			GUICtrlSetState($output2, $GUI_ENABLE)
-			Endif
 		Case $output2
 			$selected2 = FileSaveDialog("Please define a name for .xbt", @DesktopDir, "Kodi Texture File (*.xbt)", 0, "Textures.xbt")
-			if StringinStr($selected2, " ") then
-				MsgBox(0, "Error", "TexturePacker isn't supporting Spaces in Directory")
-				$selected2 = FileSaveDialog("Please define a name for .xbt", @DesktopDir, "Kodi Texture File (*.xbt)", 0, "Textures.xbt")
-			Else
 			GUICtrlSetData($status, "             Step 2 is enabled, please go ahead.")
 			If $selected2 <> "" Then
 				GUICtrlSetState($start2, $GUI_ENABLE)
 			EndIf
-			Endif
 		Case $start2
 			TrayTip("Watch out", "Extract is in progress", 2, 1)
 			ProcessClose("TexturePacker.exe")
@@ -138,7 +119,7 @@ While 1
 			;msgbox(0,"",$command)
 			Run(@ComSpec & " /c " & $command, @TempDir, @SW_HIDE)
 			GUICtrlSetData($status, "Please wait until it's done. Get yourself a coffee..")
-			TrayTip("Kodi Texture Extraction", "Wait dude...just wait..", 2, 1)
+			TrayTip("Kodi Texture Extraction", "Please wait until it's done. Get yourself a coffee or sth...", 2, 1)
 			bar()
 			ProcessWaitClose("cmd.exe")
 			GUICtrlSetData($progress, 100)
@@ -155,7 +136,7 @@ Func child()
     Local $idOK = GUICtrlCreateButton("OK", 310, 370, 85, 25)
 	$lbl2 = GUICtrlCreateLabel("Visit official Thread! Click me",10,20,100,25)
 	GUICtrlSetColor(-1,"blue")
-	GUICtrlCreateLabel("Created by e0xify - v.2.2",10,70,200,25)
+	GUICtrlCreateLabel("Created by e0xify - v.2.3",10,70,200,25)
 	GUICtrlSetState(-1,$GUI_DISABLE)
     ; Display the GUI.
     GUISetState(@SW_SHOW, $hGUI)
