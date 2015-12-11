@@ -113,7 +113,7 @@ While 1
 				GUICtrlSetState($start2, $GUI_ENABLE)
 			EndIf
 		Case $start2
-			TrayTip("Watch out", "Extract is in progress", 2, 1)
+			TrayTip("Watch out", "Extraction is in progress", 2, 1)
 			ProcessClose("TexturePacker.exe")
 			$command = "TexturePacker -dupecheck -input " & $outputedd & " -output " & $selected2
 			;msgbox(0,"",$command)
