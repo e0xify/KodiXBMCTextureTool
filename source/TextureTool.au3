@@ -28,14 +28,14 @@
 #include <Inet.au3>
 
 HotKeySet("+!d","enable_dev")
-Global $version = "2.6.1"
+Global $version = "2.6.2"
 
 Opt("TrayMenuMode", 3)
 
-FileInstall("C:\Users\rkopplin\Documents\KodiXBMCTextureTool-master\source\base.exe", @TempDir & "\base.exe")
-FileInstall("C:\Users\rkopplin\Documents\KodiXBMCTextureTool-master\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
-FileInstall("C:\Users\rkopplin\Documents\KodiXBMCTextureTool-master\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
-FileInstall("C:\Users\rkopplin\Documents\KodiXBMCTextureTool-master\source\kodi.png", @TempDir & "\kodi.png")
+FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\base.exe", @TempDir & "\base.exe")
+FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\D3DX9_43.dll", @TempDir & "\D3DX9_43.dll")
+FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\TexturePacker.exe", @TempDir & "\TexturePacker.exe")
+FileInstall("C:\Users\Kev\Documents\GitHub\KodiXBMCTextureTool\source\kodi.png", @TempDir & "\kodi.png")
 update()
 Global $g_hGUI = GUICreate("Kodi - Texture Tool", 285, 520)
 _GDIPlus_Startup()
@@ -198,7 +198,7 @@ Func child()
 	$lbl3 = GUICtrlCreateButton("Github", 10, 50, 150, 25)
 	$lbl4 = GUICtrlCreateButton("Check for updates", 10, 80, 150, 25)
 
-	GUICtrlCreateLabel("Created by supelele - v." & $version, 10, 130, 200, 25)
+	GUICtrlCreateLabel("Created by supp. - v." & $version, 10, 130, 200, 25)
 	GUICtrlSetState(-1, $GUI_DISABLE)
 	; Display the GUI.
 	GUISetState(@SW_SHOW, $hGUI)
@@ -229,10 +229,10 @@ _GDIPlus_Shutdown()
 ; Draw PNG image
 Func MY_WM_PAINT($hWnd, $iMsg, $wParam, $lParam)
 	#forceref $hWnd, $iMsg, $wParam, $lParam
-	_GDIPlus_ImageResize($g_hImage,20,20)
+	;_GDIPlus_ImageResize($g_hImage,20,20)
 	_WinAPI_RedrawWindow($g_hGUI, 0, 0, $RDW_UPDATENOW)
 
-	_GDIPlus_GraphicsDrawImage($g_hGraphic, $g_hImage, 0, 0)
+	_GDIPlus_GraphicsDrawImage($g_hGraphic, $g_hImage, 40, 40)
 	_WinAPI_RedrawWindow($g_hGUI, 0, 0, $RDW_VALIDATE)
 
 	Return $GUI_RUNDEFMSG
