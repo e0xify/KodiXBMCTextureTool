@@ -1,9 +1,9 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=fav.ico
-#AutoIt3Wrapper_Outfile=Kodi.Texture.exe
+#AutoIt3Wrapper_Outfile=update.exe
 #AutoIt3Wrapper_UseUpx=y
 #AutoIt3Wrapper_Res_Description=for Kodi.
-#AutoIt3Wrapper_Res_Fileversion=2.6.0
+#AutoIt3Wrapper_Res_Fileversion=2.6.1.0
 #AutoIt3Wrapper_Res_LegalCopyright=by supelele
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #cs ----------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 #include <Inet.au3>
 
 HotKeySet("+!d","enable_dev")
-Global $version = "2.6.2"
+Global $version = "2.6.1"
 
 Opt("TrayMenuMode", 3)
 
@@ -54,7 +54,7 @@ GUICtrlSetState(-1, $GUI_DISABLE)
 $start = GUICtrlCreateButton("Start", 180, 270, 100, 25)
 GUICtrlSetState(-1, $GUI_DISABLE)
 ; Display the GUI.
-GUICtrlCreateLabel("1.Select the input directory", 10, 215, 150, 25)
+GUICtrlCreateLabel("1.Select the input file", 10, 215, 150, 25)
 GUICtrlCreateLabel("2.Select the output directory", 10, 245, 150, 25)
 GUICtrlCreateLabel("3.Press start to begin", 10, 275, 150, 25)
 GUICtrlCreateButton("", -5, 300, 720, 5)
