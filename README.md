@@ -14,7 +14,7 @@ How to compile:
 3. Press Start
 4. Wait until done
 
-![alt tag](http://fs2.directupload.net/images/150212/784he33g.png)
+![alt tag](http://ipayforpixels.eu/kodi.png)
 
 More Informations
 http://forum.xbmc.org/showthread.php?tid=201883
