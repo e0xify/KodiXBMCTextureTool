@@ -1,5 +1,7 @@
  [Windows] Kodi XBMC - Texture Tool (.xbt)
 
+check releases page for downloads.
+
 How to decompile:
 
 1. Select Source File.
