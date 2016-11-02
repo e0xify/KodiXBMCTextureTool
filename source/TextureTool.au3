@@ -122,7 +122,7 @@ While 1
 			$command = "base.exe " & '"' & $selected & '"' & ' "' & $outputed
 			;msgbox(0,"",$command)
 			Run(@ComSpec & " /c " & $command, @TempDir, @SW_HIDE)
-			GUICtrlSetData($status, "Please wait until it's done. This may takes a few seconds")
+			GUICtrlSetData($status, "Please wait until it's done. This may take a few seconds")
 			TrayTip("Texture Extraction", "Please wait until its done...", 2, 1)
 			bar()
 			ProcessWaitClose("cmd.exe")
